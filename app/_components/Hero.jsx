@@ -21,17 +21,12 @@ function Hero() {
         <a
           className="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent 
           hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
-          href="#"
+          href="/sign-in"
         >
           Get Started
         </a>
 
-        <a
-          className="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
-          href="#"
-        >
-          Learn More
-        </a>
+       
       </div>
     </div>
   </div>
