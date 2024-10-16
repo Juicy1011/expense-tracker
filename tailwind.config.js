@@ -9,6 +9,10 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
+			'Mindaro':'#caff8a ',
+			'WhiteSmoke':'#F5F5F5',
+			'Blue1':'#3CD2F9',
+			'Blue2':'#4AF3F8',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
