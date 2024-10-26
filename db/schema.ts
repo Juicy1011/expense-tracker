@@ -5,6 +5,6 @@ export const Budgets=pgTable("budgets",{
     name:varchar('name').notNull(),
     amount:varchar('amount').notNull(),
     icon: varchar('icon'),
-    createdBy: varchar('createdBy').notNull().unique(),
+    createdBy: varchar('createdBy').notNull(),
 
 });
