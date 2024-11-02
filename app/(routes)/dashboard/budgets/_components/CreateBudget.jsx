@@ -20,7 +20,7 @@ import { toast } from 'sonner';
 
 
 
-function CreateBudget() {
+function CreateBudget({refreshData}) {
   const [emojiIcon, setEmojiIcon] = useState('💰');
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
   const [name, setName] = useState('');
@@ -39,9 +39,11 @@ function CreateBudget() {
           createdBy: user?.primaryEmailAddress?.emailAddress,
           icon: emojiIcon,
         })
-        .returning();
+        .returning({insertedId:Budgets.id});
 
       if (result) {
+        refreshData()
+
         // Now we close the dialog
         setIsDialogOpen(false);
         // Show toast after closing dialog

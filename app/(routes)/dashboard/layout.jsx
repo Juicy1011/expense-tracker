@@ -36,10 +36,9 @@ function DashboardLayout({ children }) {
       setIsLoading(false); // Stop loading after checking
     }
   };
-
-  if (isLoading) {
-    return <div>Loading...</div>; // Loading state while checking user budgets
-  }
+  //if (isLoading) {
+   // return <div>Loading...</div>; // Loading state while checking user budgets
+  //}
 
   return (
     <div className="flex">
