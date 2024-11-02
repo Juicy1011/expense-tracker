@@ -2,6 +2,12 @@ import Link from 'next/link';
 import React from 'react';
 
 function BudgetItem({ budget }) {
+
+  const calculateProgressPercent=()=>{
+   // (spend/total)*100
+    const percentage=(budget.totalSpend/budget.amount)*100;
+    return percentage.toFixed(2);
+  }
   return (
     <Link
     href={'/dashboard/expenses/' + budget?.id}>
@@ -25,7 +31,12 @@ function BudgetItem({ budget }) {
           <h2 className='text-xs text-slate-400'>${budget.amount - budget.totalSpend} Remaining</h2>
         </div>
         <div className='w-full bg-slate-300 h-2 rounded-full'>
-          <div className='w-[40%] bg-green-600 h-2 rounded-full'></div>
+          <div className='
+          bg-green-600 h-2 rounded-full'
+          style={{width:`${calculateProgressPercent()}%`
+          
+          }}
+          ></div>
         </div>
       </div>
       </div>
