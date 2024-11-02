@@ -2,10 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { db } from '@/db/dbConfig';
 import { Budgets, Expenses } from '@/db/schema';
+import moment from 'moment';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 
-function AddExpense({ budgetId, user }) { // Destructure budgetId and user from props
+function AddExpense({ budgetId, user, refreshData }) { // Destructure budgetId and user from props
     const [name, setName] = useState('');
     const [amount, setAmount] = useState('');
 
@@ -23,12 +24,13 @@ function AddExpense({ budgetId, user }) { // Destructure budgetId and user from 
                 name: name,
                 amount: parsedAmount, // Use the parsed amount
                 budgetId: Number(budgetId), // Convert budgetId to a number
-                createdBy: user?.primaryEmailAddress?.emailAddress, // Store user email
+                createdBy: moment().format('DD/MM/yyy') // show exact moment
             }).returning({ insertedId: Budgets.id }); // Fetch from Expenses table
 
             console.log(result);
 
             if (result) {
+              refreshData();
                 toast.success("New Expense Added!");
             }
         } catch (error) {
