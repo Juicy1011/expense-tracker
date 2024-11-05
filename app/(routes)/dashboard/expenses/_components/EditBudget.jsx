@@ -1,7 +1,7 @@
 "use client";
 import { Button } from '@/components/ui/button'
 import { Icon, icons, PenBox } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -17,18 +17,42 @@ import EmojiPicker from 'emoji-picker-react'
 import { useUser } from '@clerk/nextjs';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { db } from '@/db/dbConfig';
+import { Budgets } from '@/db/schema';
+import { eq } from 'drizzle-orm';
+import { toast } from 'sonner';
 
 
-function EditBudget({budgetInfo = {  name: '', amount: '' }}) {
+function EditBudget({budgetInfo = {  name: '', amount: '' } ,refreshData}) {
     const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon  );
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
-    const [name, setName] = useState('');
-    const [amount, setAmount] = useState('');
+    const [name, setName] = useState(budgetInfo?.name);
+    const [amount, setAmount] = useState(budgetInfo?.amount);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
   
     const { user } = useUser();
-    const onUpdateBudget=()=>{
+   
+    useEffect(()=>{
+      if(budgetInfo){
+        setEmojiIcon(budgetInfo?.icon)
+        setAmount(budgetInfo?.amount)
+        setName(budgetInfo?.name)
+      }
+     
+    },[budgetInfo])
 
+    const onUpdateBudget=async()=>{
+      const result= await db.update(Budgets).set({
+        name:name,
+        amount:amount,
+        icon:emojiIcon,
+      }).where(eq(Budgets.id,budgetInfo.id))
+      .returning();
+
+      if(result){
+        refreshData();
+        toast("Budget Updated !")
+      }
     }
   return (
     <div>
@@ -84,7 +108,7 @@ function EditBudget({budgetInfo = {  name: '', amount: '' }}) {
                 onClick={onUpdateBudget}
                 className="mt-5 w-full h-16 bg-blue-900 text-white transition-all duration-300 ease-in-out"
               >
-                Create Budget
+                Update Budget
               </button>
             </DialogClose>
           </DialogFooter>
