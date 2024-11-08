@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { db } from '@/db/dbConfig';
 import { Budgets, Expenses } from '@/db/schema';
+import { Loader } from 'lucide-react';
 import moment from 'moment';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
@@ -9,10 +10,12 @@ import { toast } from 'sonner';
 function AddExpense({ budgetId, user, refreshData }) { // Destructure budgetId and user from props
     const [name, setName] = useState('');
     const [amount, setAmount] = useState('');
+    const [loading, setLoading]=useState();
 
+    {/*Used to add new expense*/}
     const addNewExpense = async () => {
         try {
-
+            setLoading(true);
             const parsedAmount = parseFloat(amount); // Convert amount to a number
 
             // Check if parsedAmount is a valid number
@@ -28,16 +31,20 @@ function AddExpense({ budgetId, user, refreshData }) { // Destructure budgetId a
                 createdBy: moment().format('DD/MM/yyy') // show exact moment
             }).returning({ insertedId: Budgets.id }); // Fetch from Expenses table
 
+            
         
         
-        
+            setAmount('');
+            setName('');
 
             console.log(result);
 
             if (result) {
+                setLoading(false);
               refreshData();
                 toast.success("New Expense Added!");
             }
+            setLoading(false);
         } catch (error) {
            
                 console.error("Error adding new expense:", error);
@@ -54,6 +61,7 @@ function AddExpense({ budgetId, user, refreshData }) { // Destructure budgetId a
                 <h2 className="text-black font-medium my-1">Expense Name</h2>
                 <Input
                     placeholder="e.g. Shopping"
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
             </div>
@@ -62,15 +70,19 @@ function AddExpense({ budgetId, user, refreshData }) { // Destructure budgetId a
                 <Input
                     type="number" // Ensures that only number inputs are accepted
                     placeholder="e.g. 1000"
+                    value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                 />
             </div>
             <Button 
-                disabled={!(name && amount)} // Disable button if name or amount is empty
+                disabled={!(name && amount)|| loading} // Disable button if name or amount is empty
                 onClick={addNewExpense} // Corrected function call
                 className="mt-3 w-full bg-blue-900 text-white transition-all duration-300 ease-in-out"
             >
-                Add New Expense
+                {loading?
+            <Loader className='"animate-spin' />:"Add New Expense"    
+            }
+               
             </Button>
         </div>
     );
