@@ -6,6 +6,9 @@ import CardInfo from './_components/CardInfo';
 import { db } from '@/db/dbConfig';
 import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
 import { Budgets, Expenses } from '@/db/schema';
+import BarChartDashboard from './_components/BarChartDashboard';
+import { index } from 'drizzle-orm/mysql-core';
+import BudgetItem from './budgets/_components/BudgetItem';
 
 function page() {
   const [BudgetList, setBudgetList] = useState([]);
@@ -52,12 +55,18 @@ function page() {
     {/* CardInfo Component with distinct styling */}
     <div className="mt-5 p-4 bg-gray-100 text-gray-800 rounded-md shadow-sm">
       <CardInfo BudgetList={BudgetList}/>
-      <div className='grid grid-cols-1 md:grid-cols-3'>
+      <div className='grid grid-cols-1 md:grid-cols-3 mt-6 gap-5'>
         <div className='md:col-span-2'>
-      Chart.
+      <BarChartDashboard
+      BudgetList={BudgetList}
+      />
         </div>
-        <div>
-        Other Content.
+        <div className="grid gap-5">
+          <h2 className='font-bold text-lg'>Latest Budgets</h2>
+        {BudgetList.map((budget ,index)=>(
+          <BudgetItem budget={budget} key={index} />
+        )
+        )}
         </div>
       </div>
     </div>
