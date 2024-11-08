@@ -12,6 +12,7 @@ function AddExpense({ budgetId, user, refreshData }) { // Destructure budgetId a
 
     const addNewExpense = async () => {
         try {
+
             const parsedAmount = parseFloat(amount); // Convert amount to a number
 
             // Check if parsedAmount is a valid number
@@ -27,6 +28,10 @@ function AddExpense({ budgetId, user, refreshData }) { // Destructure budgetId a
                 createdBy: moment().format('DD/MM/yyy') // show exact moment
             }).returning({ insertedId: Budgets.id }); // Fetch from Expenses table
 
+        
+        
+        
+
             console.log(result);
 
             if (result) {
@@ -34,8 +39,11 @@ function AddExpense({ budgetId, user, refreshData }) { // Destructure budgetId a
                 toast.success("New Expense Added!");
             }
         } catch (error) {
-            console.error("Error adding new expense:", error);
-            toast.error("Failed to add expense.");
+           
+                console.error("Error adding new expense:", error);
+                toast.error("Failed to add expense.");
+            
+           
         }
     };
 

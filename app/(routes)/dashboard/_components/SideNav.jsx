@@ -2,10 +2,11 @@
 import { useEffect } from 'react';
 import { UserButton } from '@clerk/nextjs';
 import { LayoutGrid, PiggyBank, ReceiptText, ShieldCheck } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import React from 'react';
 
 function SideNav() {
+  const router = useRouter();
   const path = usePathname(); // Get the current pathname
 
   useEffect(() => {
@@ -23,7 +24,7 @@ function SideNav() {
       id: 2,
       name: 'Budgets',
       icon: PiggyBank,
-      path: '/dashboard/budget'
+      path: '/dashboard/budgets'
     },
     {
       id: 3,
@@ -49,12 +50,23 @@ function SideNav() {
       />
 
       <div className='mt-5'>
-        {menuList.map((menu) => (
-          <h2 key={menu.id} className='flex gap-2 items-center text-gray-500 font-medium p-5 cursor-pointer rounded-md hover:text-primary hover:bg-Blue2'>
-            <menu.icon />
-            {menu.name}
-          </h2>
-        ))}
+        {menuList.map((menu) => {
+          const isActive = path === menu.path; // Check if the current path matches the menu path
+          const IconComponent = menu.icon;
+
+          return (
+            <h2
+              key={menu.id}
+              onClick={() => router.push(menu.path)} // Navigate to the path on click
+              className={`flex gap-2 items-center text-gray-500 font-medium p-5 cursor-pointer rounded-md hover:text-primary hover:bg-Blue2 ${
+                isActive ? 'text-primary bg-Blue2' : ''
+              }`}
+            >
+              <IconComponent />
+              {menu.name}
+            </h2>
+          );
+        })}
       </div>
 
       <div className='fixed bottom-10 p-5 flex gap-2 items-center'>
