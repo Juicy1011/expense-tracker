@@ -2,20 +2,20 @@
 import React from 'react';
 import { UserButton } from '@clerk/nextjs';
 
-function DashboardHeader({pageTitle}) {
+function DashboardHeader({ pageTitle }) {
   return (
     // Main header container with responsive padding and flex layout
     <div className="p-3 md:p-5 shadow-sm border-b bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Flex container for logo and user profile */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Logo or branding section */}
-          <div className="text-xl font-bold">
+        <div className="flex items-center gap-4">
+          {/* Logo or branding section, aligned to the left */}
+          <div className="text-xl font-bold flex-grow">
             {pageTitle}
           </div>
 
-          {/* User profile section */}
-          <div className="flex justify-center gap-4">
+          {/* User profile section, aligned to the right */}
+          <div className="flex items-center justify-end">
             {/* UserButton component from Clerk */}
             <UserButton afterSignOutUrl="/" />
           </div>
