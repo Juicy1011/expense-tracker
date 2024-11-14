@@ -1,4 +1,8 @@
 "use client";
+
+{/*THIS IS THE EXPENSES PAGE PAGE*/}
+
+
 import { db } from '@/db/dbConfig';
 import { Budgets, Expenses } from '@/db/schema';
 import { useUser } from '@clerk/nextjs';

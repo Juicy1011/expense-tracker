@@ -1,4 +1,8 @@
 "use client";
+
+{/*THIS IS THE DASHBOARD PAGE*/}
+
+
 import { UserButton, useUser } from '@clerk/nextjs'
 import { Import } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
