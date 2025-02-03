@@ -39,12 +39,12 @@ function SideNav() {
       icon: ReceiptText,
       path: '/dashboard/expenses/all-expenses'
     },
-    {
-      id: 4,
-      name: 'Upgrade',
-      icon: ShieldCheck,
-      path: '/dashboard/upgrade'
-    }
+    // {
+    //   id: 4,
+    //   name: 'Upgrade',
+    //   icon: ShieldCheck,
+    //   path: '/dashboard/upgrade'
+    // }
   ];
 
   return (
