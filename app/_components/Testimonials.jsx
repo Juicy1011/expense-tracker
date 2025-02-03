@@ -30,17 +30,17 @@ function Testimonials() {
     {
       name: "Sharon Obuya",
       text: "As a student, learning how to manage my money is crucial. The tips on this platform have helped me develop strong financial habits, and I feel more secure.",
-      image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+      image: "https://images.unsplash.com/photo-1594737996820-af7654631790?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YmxhY2slMjB3b21hbnxlbnwwfHwwfHx8MA%3D%3D"
     },
     {
       name: "Kevin Musyoka",
       text: "I've always struggled with budgeting, but the financial management resources on this platform helped me break down my expenses and save more effectively.",
-      image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+      image: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBtYW58ZW58MHx8MHx8fDA%3D"
     },
     {
       name: "James Wambua",
       text: "I absolutely love how intuitive and helpful this platform is. It understands where I struggle and gives me just the right content.",
-      image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+      image: "https://images.unsplash.com/photo-1614890107637-fe96d74acf4b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJsYWNrJTIwbWFufGVufDB8fDB8fHww"
     }
   ]
 

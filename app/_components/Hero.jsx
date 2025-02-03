@@ -99,7 +99,7 @@ function Hero() {
 
             <motion.div
               variants={itemVariants} 
-              className="mt-10 flex items-center justify-center gap-x-6"
+              className="mt-10 flex flex-col items-center justify-center gap-6"
             >
               <a
                 href="/sign-in"
@@ -125,7 +125,79 @@ function Hero() {
                 </span>
               </a>
 
-            
+              {/* New Features Section */}
+              <motion.div 
+                variants={containerVariants}
+                className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl"
+              >
+                {[
+                  {
+                    icon: "💰",
+                    title: "Smart Savings",
+                    description: "Smart insights help you save more without changing your lifestyle"
+                  },
+                  {
+                    icon: "📊",
+                    title: "Real-time Tracking",
+                    description: "Watch your wealth grow with instant updates and visual analytics"
+                  },
+                  {
+                    icon: "🎯",
+                    title: "Goal Setting",
+                    description: "Achieve your financial dreams with personalized milestone tracking"
+                  }
+                ].map((feature, index) => (
+                  <motion.div
+                    key={feature.title}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                    className="relative group"
+                  >
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
+                    <div className="relative flex flex-col items-center p-6 bg-gray-900/60 backdrop-blur-sm rounded-lg border border-gray-800">
+                      <span className="text-3xl mb-3">{feature.icon}</span>
+                      <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                      <p className="text-sm text-gray-400 text-center">{feature.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Trust Indicators */}
+              <motion.div
+                variants={itemVariants}
+                className="mt-8 flex flex-wrap justify-center items-center gap-4 text-sm text-gray-400"
+              >
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Bank-level Security</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                  </svg>
+                  <span>50,000+ Active Users</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>4.9/5 User Rating</span>
+                </div>
+              </motion.div>
+
+              {/* Quick Start Message */}
+              <motion.p
+                variants={itemVariants}
+                className="mt-6 text-sm text-gray-400 max-w-md text-center"
+              >
+                Get started in less than 2 minutes. No credit card required.
+                <span className="block mt-1 text-gray-500">
+                  Join thousands of users who are already mastering their finances.
+                </span>
+              </motion.p>
             </motion.div>
 
             {/* Stats Section */}
