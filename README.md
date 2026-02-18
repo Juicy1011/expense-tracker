@@ -49,15 +49,7 @@ Follow these instructions to get a local copy of the project up and running.
 3.  **Set up Environment Variables:**
     Create a `.env.local` file in the root of your project and add the following environment variables. Replace the placeholder values with your actual credentials from Clerk and Neon.
 
-    ```env
-    # Clerk Keys (from your Clerk Dashboard)
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
-    CLERK_SECRET_KEY=sk_test_...
-
-    # Neon Database URL (from your Neon Dashboard)
-    # Use the connection string with connection pooling
-    NEXT_PUBLIC_DATABASE_URL="postgresql://user:password@host/db?sslmode=require"
-    ```
+ 
 
 4.  **Sync Database Schema:**
     Run the following Drizzle Kit command to push the schema defined in `db/schema.ts` to your Neon database.
